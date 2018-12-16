@@ -1,0 +1,41 @@
+# File produced by Open Asset Import Library (http://www.assimp.sf.net)
+# (assimp v3.1.187496374)
+
+mtllib test.obj.mtl
+
+# 8 vertex positions
+v  -8.06526 7.93474 0
+v  7.93474 7.93474 0
+v  7.93474 -8.06526 0
+v  -8.06526 -8.06526 0
+v  7.93474 -8.06526 1
+v  7.93474 7.93474 1
+v  -8.06526 7.93474 1
+v  -8.06526 -8.06526 1
+
+# 0 UV coordinates
+
+# 6 vertex normals
+vn 0 0 -1
+vn 0 0 1
+vn 0 1 0
+vn -1 0 0
+vn 0 -1 0
+vn 1 0 0
+
+# Mesh 'OpenSCAD_Model' with 12 faces
+g OpenSCAD_Model
+usemtl DefaultMaterial
+f  1//1 2//1 3//1
+f  1//1 3//1 4//1
+f  5//2 6//2 7//2
+f  8//2 5//2 7//2
+f  1//3 6//3 2//3
+f  1//3 7//3 6//3
+f  4//4 7//4 1//4
+f  4//4 8//4 7//4
+f  3//5 8//5 4//5
+f  3//5 5//5 8//5
+f  2//6 5//6 3//6
+f  2//6 6//6 5//6
+
