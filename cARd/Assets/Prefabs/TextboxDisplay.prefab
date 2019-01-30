@@ -201,7 +201,7 @@ TextMesh:
   m_GameObject: {fileID: 1713825445424174}
   m_Text: 
   m_OffsetZ: 0
-  m_CharacterSize: 0.45
+  m_CharacterSize: 0.75
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 0
@@ -226,4 +226,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   box: {fileID: 1165374614351368}
   words: {fileID: 102884514857366020}
-  pressed: 0

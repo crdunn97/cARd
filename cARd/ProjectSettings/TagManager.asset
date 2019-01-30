@@ -8,6 +8,11 @@ TagManager:
   - Internet
   - Box
   - Phone
+  - Company
+  - Name
+  - Title
+  - Linkedin
+  - Mail
   layers:
   - Default
   - TransparentFX

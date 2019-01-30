@@ -10,7 +10,7 @@
     /// <summary>
     /// Uses 4 frame corner objects to visualize an AugmentedImage.
     /// </summary>
-    public class TextboxVisualizer : MonoBehaviour
+    public class TitleVisualizer : MonoBehaviour
     {
         /// <summary>
         /// The AugmentedImage to visualize.
@@ -20,17 +20,17 @@
 
         public GameObject box;
         public TextMesh words;
-       
+
         public void Start()
         {
-            words.text = "Company";
+            words.text = "Title";
         }
         public void Update()
         {
             if (Image == null || Image.TrackingState != TrackingState.Tracking)
             {
                 box.SetActive(false);
-                
+
 
                 return;
             }
@@ -38,11 +38,11 @@
             box.SetActive(true);
 
 
-       
+
 
         }
 
-       
+
 
     }
 }

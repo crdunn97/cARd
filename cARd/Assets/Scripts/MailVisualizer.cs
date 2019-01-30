@@ -10,7 +10,7 @@
     /// <summary>
     /// Uses 4 frame corner objects to visualize an AugmentedImage.
     /// </summary>
-    public class TextboxVisualizer : MonoBehaviour
+    public class MailVisualizer : MonoBehaviour
     {
         /// <summary>
         /// The AugmentedImage to visualize.
@@ -18,31 +18,27 @@
         public AugmentedImage Image;
 
 
-        public GameObject box;
-        public TextMesh words;
-       
+        public GameObject internet;
+
+
         public void Start()
         {
-            words.text = "Company";
+
         }
         public void Update()
         {
+
             if (Image == null || Image.TrackingState != TrackingState.Tracking)
             {
-                box.SetActive(false);
-                
-
+                internet.SetActive(false);
                 return;
             }
+            internet.SetActive(true);
 
-            box.SetActive(true);
-
-
-       
-
+      
         }
 
-       
+
 
     }
 }
