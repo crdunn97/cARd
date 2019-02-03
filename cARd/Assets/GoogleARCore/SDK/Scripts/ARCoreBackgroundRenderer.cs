@@ -1,3 +1,13 @@
+//Resources:
+//https://stackoverflow.com/questions/49798067/arcore-for-unity-save-camera-image
+//https://developers.google.com/ar/reference/unity/struct/GoogleARCore/CameraImageBytes#structGoogleARCore_1_1CameraImageBytes
+//https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.marshal.copy?view=netframework-4.7.2#System_Runtime_InteropServices_Marshal_Copy_System_IntPtr___System_Int32_System_IntPtr_System_Int32_
+//https://stackoverflow.com/questions/49579334/save-acquirecameraimagebytes-from-unity-arcore-to-storage-as-an-image
+//https://stackoverflow.com/questions/50879047/how-to-get-arcore-acquirecameraimagebytes-in-color
+//https://en.wikipedia.org/wiki/YUV
+//
+
+
 //-----------------------------------------------------------------------
 // <copyright file="ARCoreBackgroundRenderer.cs" company="Google">
 //
@@ -25,6 +35,8 @@ namespace GoogleARCore
     using GoogleARCoreInternal;
     using UnityEngine;
     using UnityEngine.XR;
+    using ZXing;
+    using ZXing.QrCode;
 
     /// <summary>
     /// Renders the device's camera as a background to the attached Unity camera component.
@@ -43,6 +55,14 @@ namespace GoogleARCore
 
         private ARBackgroundRenderer m_BackgroundRenderer;
 
+        private bool QRScanned = false;
+        public static string QRText = "";
+        private int counter = 0;
+        public GUIStyle labelStyle;
+        public Texture2D _texture = null;
+        Color32[] pixels = null;
+        IBarcodeReader barcodeReader = new BarcodeReader();
+
         private void OnEnable()
         {
             if (m_BackgroundRenderer == null)
@@ -57,6 +77,7 @@ namespace GoogleARCore
             }
 
             m_Camera = GetComponent<Camera>();
+            Debug.Log("Height and Scaled Height: " + m_Camera.pixelHeight + ", " + m_Camera.scaledPixelHeight);
             m_BackgroundRenderer.backgroundMaterial = BackgroundMaterial;
             m_BackgroundRenderer.camera = m_Camera;
             m_BackgroundRenderer.mode = ARRenderMode.MaterialAsBackground;
@@ -67,8 +88,58 @@ namespace GoogleARCore
             Disable();
         }
 
+        /*private void OnGUI()
+        {
+            GUI.Label(new Rect(300, 200, 200, 200), QRText, labelStyle);
+            GUI.Label(new Rect(500, 400, 400, 400), counter.ToString(), labelStyle);
+        } */
+
         private void Update()
         {
+            if (!QRScanned)
+            {
+                counter++;
+                if (true)//if (counter % 1 == 0)
+                {
+                    using (var image = Frame.CameraImage.AcquireCameraImageBytes())
+                    {
+                        if (image.IsAvailable)
+                        {
+                            byte[] m_EdgeImage = null;
+                            if (_texture == null || m_EdgeImage == null || _texture.width != image.Width || _texture.height != image.Height)
+                            {
+                                _texture = new Texture2D(image.Width, image.Height, TextureFormat.RGBA32, false, false);
+                                m_EdgeImage = new byte[image.Width * image.Height * 4];
+                            }
+                            System.Runtime.InteropServices.Marshal.Copy(image.Y, m_EdgeImage, 0, image.Width * image.Height);
+                            _texture.LoadRawTextureData(m_EdgeImage);
+                            _texture.Apply();
+                            pixels = _texture.GetPixels32();
+                            Destroy(_texture);
+                            try
+                            {
+                                var result = barcodeReader.Decode(pixels, image.Width, image.Height);
+                                QRText = result.Text;
+                                QRScanned = true;
+                            }
+                            catch (System.Exception ex) { Debug.LogWarning(ex.Message); }
+                            image.Release();
+                            image.Dispose();
+                        }
+                    }
+                }
+
+                /*
+                var YUVImage = Frame.CameraImage.AcquireCameraImageBytes();
+                System.Runtime.InteropServices.Marshal.Copy(pixelBuffer, m_EdgeImage, 0, bufferSize);
+                try
+                {
+                    var image = Frame.CameraImage.AcquireCameraImageBytes();
+                    IBarcodeReader barcodeReader = new BarcodeReader();
+                    var result = barcodeReader.Decode(image, image.Width, image.Height);
+                }
+                catch (System.Exception ex) { Debug.LogWarning(ex.Message); } */
+            }
             if (BackgroundMaterial == null)
             {
                 return;

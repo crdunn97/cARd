@@ -23,7 +23,7 @@
        
         public void Start()
         {
-            words.text = "Company";
+            
         }
         public void Update()
         {
@@ -34,7 +34,7 @@
 
                 return;
             }
-
+            words.text = ARCoreBackgroundRenderer.QRText;
             box.SetActive(true);
 
 
