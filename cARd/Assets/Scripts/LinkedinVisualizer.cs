@@ -18,7 +18,7 @@
         public AugmentedImage Image;
 
 
-        public GameObject phone;
+        public GameObject linkedin;
 
 
         public void Start()
@@ -30,10 +30,15 @@
 
             if (Image == null || Image.TrackingState != TrackingState.Tracking)
             {
-                phone.SetActive(false);
+                linkedin.SetActive(false);
                 return;
             }
-            phone.SetActive(true);
+            if (MailVisualizer.mail == true)
+            {
+                linkedin.SetActive(false);
+                return;
+            }
+            linkedin.SetActive(true);
 
             ButtonPress();
         }

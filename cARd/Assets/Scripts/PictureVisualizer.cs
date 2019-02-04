@@ -39,6 +39,11 @@
 
                 return;
             }
+            if (MailVisualizer.mail == true)
+            {
+                frame.SetActive(false);
+                return;
+            }
 
             frame.SetActive(true);
 

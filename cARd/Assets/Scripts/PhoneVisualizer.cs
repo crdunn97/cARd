@@ -33,7 +33,12 @@
                 phone.SetActive(false);
                 return;
             }
-            phone.SetActive(true);
+            if (MailVisualizer.mail == true)
+            {
+                phone.SetActive(false);
+                return;
+            }
+                phone.SetActive(true);
 
             ButtonPress();
         }

@@ -33,6 +33,11 @@
                 email.SetActive(false);
                 return;
             }
+            if(MailVisualizer.mail == true)
+            {
+                email.SetActive(false);
+                return;
+            }
             email.SetActive(true);
 
             ButtonPress();

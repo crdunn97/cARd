@@ -16,7 +16,7 @@
         /// The AugmentedImage to visualize.
         /// </summary>
         public AugmentedImage Image;
-
+        public static bool mail = false;
 
         public GameObject internet;
 
@@ -30,12 +30,38 @@
 
             if (Image == null || Image.TrackingState != TrackingState.Tracking)
             {
-                internet.SetActive(false);
+                internet.SetActive(true);
                 return;
             }
             internet.SetActive(true);
-
+            ButtonPress();
       
+        }
+        public void ButtonPress()
+        {
+
+
+            Touch touch;
+            if (Input.touchCount != 1 ||
+                (touch = Input.GetTouch(0)).phase != TouchPhase.Began)
+            {
+                return;
+            }
+
+
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(touch.position);
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.collider.CompareTag("Mail"))
+                {
+                    mail ^= true;
+                }
+            }
+
+
+
+
         }
 
 

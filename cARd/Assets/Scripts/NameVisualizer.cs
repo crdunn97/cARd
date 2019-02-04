@@ -34,7 +34,13 @@
 
                 return;
             }
-
+            if (MailVisualizer.mail == true)
+            {
+                box.SetActive(false);
+                words.text = "";
+                return;
+            }
+            words.text = "Name";
             box.SetActive(true);
 
 

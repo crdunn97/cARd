@@ -33,8 +33,13 @@
                 internet.SetActive(false);
                 return;
             }
+            
+            if (MailVisualizer.mail == true)
+            {
+                internet.SetActive(false);
+                return;
+            }
             internet.SetActive(true);
-
             ButtonPress();
         }
 
