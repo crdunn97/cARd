@@ -10,7 +10,7 @@
     /// <summary>
     /// Uses 4 frame corner objects to visualize an AugmentedImage.
     /// </summary>
-    public class TextboxVisualizer : MonoBehaviour
+    public class ProfileVisualizer : MonoBehaviour
     {
         /// <summary>
         /// The AugmentedImage to visualize.
@@ -23,32 +23,33 @@
        
         public void Start()
         {
-            
+            words.text = "";
         }
         public void Update()
         {
+            
             if (Image == null || Image.TrackingState != TrackingState.Tracking)
             {
                 box.SetActive(false);
-                
+
 
                 return;
             }
-            if (MailVisualizer.mail == true || NextVisualizer.next == true)
+            if (NextVisualizer.next == true)
             {
-                box.SetActive(false);
+                box.SetActive(true);
                 words.text = "";
                 return;
             }
-            words.text = ARCoreBackgroundRenderer.QRText;
-            box.SetActive(true);
+            words.text = "";
+            box.SetActive(false);
 
 
-       
+
 
         }
 
-       
+
 
     }
 }

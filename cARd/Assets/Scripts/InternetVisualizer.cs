@@ -34,7 +34,7 @@
                 return;
             }
             
-            if (MailVisualizer.mail == true)
+            if (MailVisualizer.mail == true || NextVisualizer.next == true)
             {
                 internet.SetActive(false);
                 return;

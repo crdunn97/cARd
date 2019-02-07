@@ -39,7 +39,7 @@
 
                 return;
             }
-            if (MailVisualizer.mail == true)
+            if (MailVisualizer.mail == true || NextVisualizer.next == true)
             {
                 frame.SetActive(false);
                 return;

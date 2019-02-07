@@ -33,7 +33,7 @@
                 linkedin.SetActive(false);
                 return;
             }
-            if (MailVisualizer.mail == true)
+            if (MailVisualizer.mail == true || NextVisualizer.next == true)
             {
                 linkedin.SetActive(false);
                 return;

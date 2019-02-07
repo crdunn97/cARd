@@ -18,7 +18,7 @@
         public AugmentedImage Image;
         public static bool mail = false;
 
-        public GameObject internet;
+        public GameObject box;
 
 
         public void Start()
@@ -30,10 +30,16 @@
 
             if (Image == null || Image.TrackingState != TrackingState.Tracking)
             {
-                internet.SetActive(true);
+                box.SetActive(false);
                 return;
             }
-            internet.SetActive(true);
+            if (NextVisualizer.next == true)
+            {
+                box.SetActive(false);
+
+                return;
+            }
+            box.SetActive(true);
             ButtonPress();
       
         }

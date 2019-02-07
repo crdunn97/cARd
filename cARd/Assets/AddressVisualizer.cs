@@ -20,11 +20,11 @@
 
         public GameObject box;
         public TextMesh words;
-        public string streetnumber;
-        public string streetname;
-        public string city;
-        public string state;
-        public string zip;
+        private string streetnumber;
+        private string streetname;
+        private string city;
+        private string state;
+        private string zip;
         public void Start()
         {
             words.text = "";

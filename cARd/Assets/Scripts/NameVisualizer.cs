@@ -23,7 +23,7 @@
 
         public void Start()
         {
-            words.text = "Name";
+         
         }
         public void Update()
         {
@@ -34,7 +34,7 @@
 
                 return;
             }
-            if (MailVisualizer.mail == true)
+            if (MailVisualizer.mail == true || NextVisualizer.next == true)
             {
                 box.SetActive(false);
                 words.text = "";

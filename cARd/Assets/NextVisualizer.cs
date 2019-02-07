@@ -10,16 +10,16 @@
     /// <summary>
     /// Uses 4 frame corner objects to visualize an AugmentedImage.
     /// </summary>
-    public class PhoneVisualizer : MonoBehaviour
+    public class NextVisualizer : MonoBehaviour
     {
         /// <summary>
         /// The AugmentedImage to visualize.
         /// </summary>
         public AugmentedImage Image;
+        public static bool next = false;
 
-
-        public GameObject phone;
-
+        public GameObject box;
+ 
 
         public void Start()
         {
@@ -27,22 +27,25 @@
         }
         public void Update()
         {
-
             if (Image == null || Image.TrackingState != TrackingState.Tracking)
             {
-                phone.SetActive(false);
+                box.SetActive(false);
+
+
                 return;
             }
-            if (MailVisualizer.mail == true || NextVisualizer.next == true)
+            if (MailVisualizer.mail == true)
             {
-                phone.SetActive(false);
+                box.SetActive(false);
+
                 return;
             }
-                phone.SetActive(true);
-
+            box.SetActive(true);
             ButtonPress();
-        }
 
+
+
+        }
         public void ButtonPress()
         {
 
@@ -59,11 +62,9 @@
             Ray ray = Camera.main.ScreenPointToRay(touch.position);
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.collider.CompareTag("Phone"))
+                if (hit.collider.CompareTag("Next"))
                 {
-                    string number = "9524262077";
-                    Application.OpenURL("tel://" + number);
-
+                    next ^= true;
                 }
             }
 
@@ -71,6 +72,8 @@
 
 
         }
+
+
 
     }
 }

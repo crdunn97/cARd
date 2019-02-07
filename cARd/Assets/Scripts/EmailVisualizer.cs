@@ -33,7 +33,7 @@
                 email.SetActive(false);
                 return;
             }
-            if(MailVisualizer.mail == true)
+            if(MailVisualizer.mail == true || NextVisualizer.next == true)
             {
                 email.SetActive(false);
                 return;
