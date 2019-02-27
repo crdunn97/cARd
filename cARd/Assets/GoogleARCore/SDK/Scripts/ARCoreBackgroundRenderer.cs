@@ -55,7 +55,7 @@ namespace GoogleARCore
 
         private ARBackgroundRenderer m_BackgroundRenderer;
 
-        private bool QRScanned = false;
+        public static bool QRScanned = false;
         public static string QRText = "";
         private int counter = 0;
         public GUIStyle labelStyle;
