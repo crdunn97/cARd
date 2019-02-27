@@ -419,10 +419,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 95
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 9
+    m_MinSize: 0
     m_MaxSize: 95
     m_Alignment: 3
     m_AlignByGeometry: 0
@@ -692,10 +692,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 95
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 9
+    m_MinSize: 5
     m_MaxSize: 95
     m_Alignment: 3
     m_AlignByGeometry: 0
@@ -909,7 +909,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emailText: {fileID: 309097521}
   passwordText: {fileID: 861481146}
-  loginButton: {fileID: 1466574996}
 --- !u!4 &1059272490
 Transform:
   m_ObjectHideFlags: 0
