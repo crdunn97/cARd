@@ -61,7 +61,7 @@
             {
                 if (hit.collider.CompareTag("Phone"))
                 {
-                    string number = "9524262077";
+                    string number = DatabaseReciever.phone;
                     Application.OpenURL("tel://" + number);
 
                 }

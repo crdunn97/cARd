@@ -40,7 +40,7 @@
                 words.text = "";
                 return;
             }
-            words.text = "Title";
+            words.text = DatabaseReciever.title;
             box.SetActive(true);
 
 

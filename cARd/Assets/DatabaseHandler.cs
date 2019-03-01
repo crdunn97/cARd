@@ -143,8 +143,8 @@ namespace Firebase.Sample.Database
             image = imageText.text;
             profile = profileText.text;
 
-            DatabaseReference reference = FirebaseDatabase.DefaultInstance.GetReference("Profiles");
-
+            DatabaseReference reference = FirebaseDatabase.DefaultInstance.GetReference("Profiles").Child(Auth.LoginHandler.CurrentUserID);
+            
             DebugLog("Running Transaction...");
             // Use a transaction to ensure that we do not encounter issues with
             // simultaneous updates that otherwise might create more than MaxScores top scores.
@@ -182,6 +182,7 @@ namespace Firebase.Sample.Database
                 // Now we add the new score as a new entry that contains the email address and score.
                 Dictionary<string, object> newProfile = new Dictionary<string, object>();
                 newProfile["name"] = name1;
+                newProfile["company"] = company;
                 newProfile["email"] = email;
                 newProfile["title"] = title;
                 newProfile["phone"] = phone;

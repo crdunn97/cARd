@@ -62,7 +62,7 @@
                 if (hit.collider.CompareTag("Linkedin"))
                 {
                     //Opens ULR in web browser
-                    string url = "https://www.linkedin.com";
+                    string url = DatabaseReciever.linkedin;
                     Application.OpenURL(url);
 
                 }

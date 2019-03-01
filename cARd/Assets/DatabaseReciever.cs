@@ -4,6 +4,7 @@ using UnityEngine;
 using Firebase;
 using Firebase.Database;
 using Firebase.Unity.Editor;
+using GoogleARCore;
 
 public class DatabaseReciever : MonoBehaviour {
 
@@ -15,7 +16,8 @@ public class DatabaseReciever : MonoBehaviour {
     public static string webpage;
     public static string linkedin;
     public static string profile;
-
+    public static string image;
+    private bool dataRecieved = false;
 
 	// Use this for initialization
 	void Start () {
@@ -28,10 +30,10 @@ public class DatabaseReciever : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(GoogleARCore.ARCoreBackgroundRenderer.QRScanned == true)
+		if(GoogleARCore.ARCoreBackgroundRenderer.QRScanned == true && dataRecieved == false)
         {
             FirebaseDatabase.DefaultInstance
-             .GetReference("user")
+             .GetReference("Profiles")
              .GetValueAsync().ContinueWith(task => {
           if (task.IsFaulted)
           {
@@ -41,9 +43,30 @@ public class DatabaseReciever : MonoBehaviour {
           {
               DataSnapshot snapshot = task.Result;
                      // Do something with snapshot...
-              DataSnapshot nameSnap = snapshot.Child(name);
-              name1 = nameSnap.GetRawJsonValue();
-          }
+                     //hard coded for testing
+                     /*
+                     name1 = snapshot.Child("rv8BmT4nA7baV3br7rKrG6t0Ww83").Child("0").Child("name").Value.ToString();
+                     company = snapshot.Child("rv8BmT4nA7baV3br7rKrG6t0Ww83").Child("0").Child("company").Value.ToString();
+                     title = snapshot.Child("rv8BmT4nA7baV3br7rKrG6t0Ww83").Child("0").Child("title").Value.ToString();
+                     phone = snapshot.Child("rv8BmT4nA7baV3br7rKrG6t0Ww83").Child("0").Child("phone").Value.ToString();
+                     email = snapshot.Child("rv8BmT4nA7baV3br7rKrG6t0Ww83").Child("0").Child("email").Value.ToString();
+                     webpage = snapshot.Child("rv8BmT4nA7baV3br7rKrG6t0Ww83").Child("0").Child("webpage").Value.ToString();
+                     linkedin = snapshot.Child("rv8BmT4nA7baV3br7rKrG6t0Ww83").Child("0").Child("linkedin").Value.ToString();
+                     profile = snapshot.Child("rv8BmT4nA7baV3br7rKrG6t0Ww83").Child("0").Child("profile").Value.ToString();
+                     image = snapshot.Child("rv8BmT4nA7baV3br7rKrG6t0Ww83").Child("0").Child("image").Value.ToString();
+                    */
+                     name1 = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child("0").Child("name").Value.ToString();
+                     company = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child("0").Child("company").Value.ToString();
+                     title = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child("0").Child("title").Value.ToString();
+                     phone = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child("0").Child("phone").Value.ToString();
+                     email = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child("0").Child("email").Value.ToString();
+                     webpage = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child("0").Child("webpage").Value.ToString();
+                     linkedin = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child("0").Child("linkedin").Value.ToString();
+                     profile = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child("0").Child("profile").Value.ToString();
+                     image = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child("0").Child("image").Value.ToString();
+
+                     dataRecieved = true;
+                 }
       });
         }
 	}

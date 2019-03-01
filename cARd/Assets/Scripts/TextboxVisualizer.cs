@@ -40,7 +40,7 @@
                 words.text = "";
                 return;
             }
-            words.text = ARCoreBackgroundRenderer.QRText;
+            words.text = DatabaseReciever.company;
             box.SetActive(true);
 
 

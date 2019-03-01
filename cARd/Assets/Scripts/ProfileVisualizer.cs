@@ -38,7 +38,7 @@
             }
             if (NextVisualizer.next == true)
             {
-                string profile = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum purus leo, viverra vel diam vitae, fringilla blandit ante. Nunc ac ultrices libero. Nullam consectetur lacus est, vitae finibus justo tempor ac. Praesent nibh nulla, tincidunt vulputate erat quis, tempus ullamcorper erat. Mauris pharetra iaculis tellus ut blandit. Maecenas sagittis et ex sit amet iaculis. Nullam condimentum accumsan consectetur. Sed ut eros ante. Ut semper mollis dui, at dapibus ex aliquet eget.";
+                string profile = DatabaseReciever.profile;
                 string output = SpliceNoteText(profile, 85);
                 words.text = output;
                 box.SetActive(true);

@@ -62,7 +62,7 @@
                 if (hit.collider.CompareTag("Internet"))
                 {
                     //Opens ULR in web browser
-                    string url = "https://www.cpp.edu";
+                    string url = DatabaseReciever.webpage;
                     Application.OpenURL(url);
                     
                 }

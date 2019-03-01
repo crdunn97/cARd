@@ -27,6 +27,8 @@ namespace Firebase.Sample.Auth
         protected string displayName = "";
         protected string phoneNumber = "";
         protected string receivedCode = "";
+        public static string CurrentUserID = "";
+        private bool LoggedIn = false; 
         // Whether to sign in / link or reauthentication *and* fetch user profile data.
         protected bool signInAndFetchProfile = false;
         // Flag set when a token is being fetched.  This is used to avoid printing the token
@@ -105,8 +107,8 @@ namespace Firebase.Sample.Auth
                   {
                       var user = task.Result;
                       DisplayDetailedUserInfo(user, 1);
-                      UpdateUserProfileAsync(newDisplayName: newDisplayName);
-                      SceneManager.LoadSceneAsync("ProfileScene");
+                      return UpdateUserProfileAsync(newDisplayName: newDisplayName);
+                      //SceneManager.LoadSceneAsync("ProfileScene");
                   }
                   return task;
               }).Unwrap();
@@ -190,7 +192,8 @@ namespace Firebase.Sample.Auth
             if (LogTaskCompletion(task, "Sign-in"))
             {
                 DebugLog(String.Format("{0} signed in", task.Result.DisplayName));
-   
+                CurrentUserID = auth.CurrentUser.UserId;
+                LoggedIn = true;
 
             }
 
@@ -539,6 +542,13 @@ namespace Firebase.Sample.Auth
         public void loadCameraScene()
         {            
             SceneManager.LoadSceneAsync("cARd");
+        }
+        public void loadProfileScene()
+        {
+            if (LoggedIn == true)
+            {
+                SceneManager.LoadSceneAsync("ProfileScene");
+            }
         }
     }
 }

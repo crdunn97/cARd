@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TextureURL : MonoBehaviour
 {
-    public string url = "https://docs.unity3d.com/uploads/Main/ShadowIntro.png";
+    public string url = DatabaseReciever.image;
 
     IEnumerator Start()
     {

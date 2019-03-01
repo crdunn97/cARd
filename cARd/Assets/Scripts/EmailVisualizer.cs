@@ -61,7 +61,7 @@
                 if (hit.collider.CompareTag("Email"))
                 {
                     //Code to open email application and enter email, subject and body
-                    string address = "test@example.com";
+                    string address = DatabaseReciever.email;
                     string subject = "";
                     string body = "";
                     Application.OpenURL("mailto:" + address + "?subject=" + subject + "&body=" + body);
