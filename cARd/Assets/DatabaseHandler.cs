@@ -23,6 +23,9 @@ namespace Firebase.Sample.Database
     using UnityEngine;
     using UnityEngine.UI;
     using UnityEngine.SceneManagement;
+    using ZXing;
+    using ZXing.QrCode;
+    using System.IO;
 
     // Handler for UI buttons on the scene.  Also performs some
     // necessary setup (initializing the firebase app, etc) on
@@ -199,6 +202,35 @@ namespace Firebase.Sample.Database
             
 
         }
+        public void createQR()
+        {
+            string textForEncoding = Auth.LoginHandler.CurrentUserID;
+            var encoded = new Texture2D(256, 256);
+            var color32 = Encode(textForEncoding, encoded.width, encoded.height);
+            encoded.SetPixels32(color32);
+            encoded.Apply();
+            byte[] pngBytes = encoded.EncodeToPNG();
+            //var output = new File.Open(Application.dataPath + "/" + encoded + ".png", FileMode.Create);
+            //File.WriteAllBytes(Application.dataPath + "/../SavedScreen.png", pngBytes);
+            File.WriteAllBytes("sdcard/Download/" + textForEncoding + ".png", pngBytes);
+        }
+
+        private static Color32[] Encode(string textForEncoding, int width, int height)
+        {
+            var writer = new BarcodeWriter
+            {
+                Format = BarcodeFormat.QR_CODE,
+                Options = new QrCodeEncodingOptions
+                {
+                    Height = height,
+                    Width = width
+                }
+            };
+            return writer.Write(textForEncoding);
+        }
+
+
+
     }
 }
 

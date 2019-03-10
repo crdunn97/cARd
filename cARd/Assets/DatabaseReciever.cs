@@ -55,15 +55,17 @@ public class DatabaseReciever : MonoBehaviour {
                      profile = snapshot.Child("rv8BmT4nA7baV3br7rKrG6t0Ww83").Child("0").Child("profile").Value.ToString();
                      image = snapshot.Child("rv8BmT4nA7baV3br7rKrG6t0Ww83").Child("0").Child("image").Value.ToString();
                     */
-                     name1 = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child("0").Child("name").Value.ToString();
-                     company = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child("0").Child("company").Value.ToString();
-                     title = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child("0").Child("title").Value.ToString();
-                     phone = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child("0").Child("phone").Value.ToString();
-                     email = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child("0").Child("email").Value.ToString();
-                     webpage = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child("0").Child("webpage").Value.ToString();
-                     linkedin = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child("0").Child("linkedin").Value.ToString();
-                     profile = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child("0").Child("profile").Value.ToString();
-                     image = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child("0").Child("image").Value.ToString();
+                     string childLatest = ((int)(snapshot.Child(ARCoreBackgroundRenderer.QRText).ChildrenCount) - 1).ToString();
+                     name1 = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child(childLatest).Child("name").Value.ToString();
+                     
+                     company = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child(childLatest).Child("company").Value.ToString();
+                     title = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child(childLatest).Child("title").Value.ToString();
+                     phone = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child(childLatest).Child("phone").Value.ToString();
+                     email = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child(childLatest).Child("email").Value.ToString();
+                     webpage = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child(childLatest).Child("webpage").Value.ToString();
+                     linkedin = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child(childLatest).Child("linkedin").Value.ToString();
+                     profile = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child(childLatest).Child("profile").Value.ToString();
+                     image = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child(childLatest).Child("image").Value.ToString();
 
                      dataRecieved = true;
                  }

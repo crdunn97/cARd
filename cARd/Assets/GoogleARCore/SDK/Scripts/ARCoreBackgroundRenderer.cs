@@ -87,8 +87,8 @@ namespace GoogleARCore
         {
             Disable();
         }
-
-        /*private void OnGUI()
+        /*
+        private void OnGUI()
         {
             GUI.Label(new Rect(300, 200, 200, 200), QRText, labelStyle);
             GUI.Label(new Rect(500, 400, 400, 400), counter.ToString(), labelStyle);
