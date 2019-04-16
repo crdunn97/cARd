@@ -7,7 +7,8 @@ ECE Department
 
 Senior Project
 
-Chris Dunn, Carlos Ramos, Trung Nguyen, Sunny Koung
+Chris Dunn, Carlos Ramos
 
 Advisor: Dr. Yin
 
+To use: Download project and install to phone using unity engine. Marker image is saved within assets folder.
