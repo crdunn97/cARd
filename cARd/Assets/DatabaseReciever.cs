@@ -56,8 +56,7 @@ public class DatabaseReciever : MonoBehaviour {
                      image = snapshot.Child("rv8BmT4nA7baV3br7rKrG6t0Ww83").Child("0").Child("image").Value.ToString();
                     */
                      string childLatest = ((int)(snapshot.Child(ARCoreBackgroundRenderer.QRText).ChildrenCount) - 1).ToString();
-                     name1 = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child(childLatest).Child("name").Value.ToString();
-                     
+                     name1 = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child(childLatest).Child("named").Value.ToString();
                      company = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child(childLatest).Child("company").Value.ToString();
                      title = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child(childLatest).Child("title").Value.ToString();
                      phone = snapshot.Child(ARCoreBackgroundRenderer.QRText).Child(childLatest).Child("phone").Value.ToString();

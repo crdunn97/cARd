@@ -266,6 +266,11 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 114137002138810038, guid: df7b0d3fcdc2cfd479dde0948139c81a,
+        type: 2}
+      propertyPath: url
+      value: https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX3044773.jpg
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df7b0d3fcdc2cfd479dde0948139c81a, type: 2}
   m_IsPrefabAsset: 0

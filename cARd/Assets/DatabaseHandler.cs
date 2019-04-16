@@ -184,7 +184,7 @@ namespace Firebase.Sample.Database
 
                 // Now we add the new score as a new entry that contains the email address and score.
                 Dictionary<string, object> newProfile = new Dictionary<string, object>();
-                newProfile["name"] = name1;
+                newProfile["named"] = name1;
                 newProfile["company"] = company;
                 newProfile["email"] = email;
                 newProfile["title"] = title;
